@@ -5,7 +5,7 @@ class Application
 
     public function run()
     {
-        // Pega parametro passado via URL
+        // Classe passada via URL
         if (isset($_GET['url'])) {
             $url = explode('/', $_GET['url']);
             $class = ucfirst($url[0]);
@@ -13,17 +13,19 @@ class Application
             $class =  ucfirst(self::DEFAULT);
         }
 
-        // Instancia caminhos dos arquivos MVC
-        $model  = 'models\\' . $class . 'Model';
-        $view = 'views\\' . $class . 'View';
-        $controller = 'controller\\' . $class . 'Controller';
+        // Instancias dos caminhos MVC
+        $models  = 'models\\' . $class . 'Model';
+        $views = 'views\\' . $class . 'View';
+        $controllers = 'controllers\\' . $class . 'Controller';
 
-        echo ($class . '<br>');
-        echo ($model . '<br>');
-        echo ($view . '<br>');
-        echo ($controller . '<br>');
+        // Testes
+        // echo ($class . '<br>');
+        // echo ($models . '<br>');
+        // echo ($views . '<br>');
+        // echo ($controllers . '<br>');
 
-        // $controller = new $class(new $view, new $model);
-        // $controller->index;
+        // Referencia e instancia uma nova controller de acordo com parametro da classe
+        $controller = new $controllers(new $views, new $models);
+        $controller->index();
     }
 }

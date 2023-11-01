@@ -3,7 +3,7 @@ $autoload = function ($class) {
     if (file_exists($class . '.php')) {
         include_once($class . '.php');
     } else {
-        die('Classe ' . $class . '.php não foi instanciada!');
+        die('Classe ' . $class . ' não instanciada!');
     }
 };
 
