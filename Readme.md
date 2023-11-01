@@ -3,4 +3,5 @@
 ## Introducao
 Estudos de MVC, utilizando:
 * PHP 
+* Templates
 * Json
