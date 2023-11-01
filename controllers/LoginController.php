@@ -11,6 +11,13 @@ class LoginController extends Controller
 
     public function index()
     {
-        echo ('Página de login!' . '<br>');
+        if (isset($_POST['validaLogin'])) {
+            if ($this->model->validaLogin($_POST['login'], $_POST['senha'])) {
+                echo ('Logado!' . '<br>');
+            } else {
+                echo ('Falha no login!' . '<br>');
+            }
+        }
+        $this->view->render('login');
     }
 }
