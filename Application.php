@@ -5,26 +5,23 @@ class Application
 
     public function run()
     {
+        // Pega parametro passado via URL
         if (isset($_GET['url'])) {
             $url = explode('/', $_GET['url']);
-            $class = 'controllers\\' . ucfirst($url[0]) . 'Controller';
+            $class = ucfirst($url[0]);
         } else {
-            $class = 'controllers\\' . self::DEFAULT . 'Controller';
-            $url[0] = self::DEFAULT;
+            $class =  ucfirst(self::DEFAULT);
         }
 
-        $nameClass = explode('\\', $class);
-        $nameClass = $nameClass[count($nameClass) - 1];
+        // Instancia caminhos dos arquivos MVC
+        $model  = 'models\\' . $class . 'Model';
+        $view = 'views\\' . $class . 'View';
+        $controller = 'controller\\' . $class . 'Controller';
 
-        $view = 'views\\' . $url[0] . 'View';
-        $model  = 'models\\' . $url[0] . 'Model';
-
-        echo ($url . '<br>');
-        echo ($url[0] . '<br>');
         echo ($class . '<br>');
-        echo ($nameClass . '<br>');
-        echo ($view . '<br>');
         echo ($model . '<br>');
+        echo ($view . '<br>');
+        echo ($controller . '<br>');
 
         // $controller = new $class(new $view, new $model);
         // $controller->index;
